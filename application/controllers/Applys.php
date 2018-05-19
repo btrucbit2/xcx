@@ -17,21 +17,20 @@ class Applys extends MY_Controller
      */
     public function add()
     {
-        $uid = $_POST['uid'];
         $userame = $_POST['username'];
         $type = $_POST['type'];
         $address = $_POST['address'];
         $mobile = $_POST['mobile'];
         $token = $_POST['token'];
 
-        $token_info = $this->token->get_one(['uid' => $uid], 'created_at desc');
+        $token_info = $this->token->get_one(['token' => $token], 'created_at desc');
         if(!$token_info || $token!=$token_info['token'] || $token_info['expire_at'] < date('Y-m-d H:i:s', time())){
             $this->returnError('未登录', 401);
             exit();
         }
 
         $this->apply->insert([
-            'uid' => $uid,
+            'uid' => $token_info['uid'],
             'userame' => $userame,
             'type' => $type,
             'address' => $address,
