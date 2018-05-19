@@ -25,6 +25,7 @@ class Login extends CI_Controller
             $user_info = $this->users->get_one(['openid' => $openid]);
             if ($user_info) {
                 $uid = $user_info['uid'];
+            }else{
                 $this->users->add([
                     'openid' => $openid,
                     'created_at' => date('Y-m-d H:i:s', time()),
