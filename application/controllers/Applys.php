@@ -17,10 +17,10 @@ class Applys extends MY_Controller
      */
     public function add()
     {
-        $userame = $_POST['username'];
-        $type = $_POST['type'];
-        $address = $_POST['address'];
-        $mobile = $_POST['mobile'];
+        $userame = '222'.rand(1, 100000);
+        $type = 'ta';
+        $address = '22222';
+        $mobile = '3333';
         $token = $_GET['token'];
 
         $token_info = $this->token->get_one(['token' => $token], 'created_at desc');
