@@ -25,7 +25,7 @@ class Applys extends MY_Controller
         $token = $_POST['token'];
 
         $token_info = $this->token->get_one(['uid' => $uid], 'created_at desc');
-        if(!$token_info || $token_info['expire_at'] < date('Y-m-d H:i:s', time())){
+        if(!$token_info || $token!=$token_info['token'] || $token_info['expire_at'] < date('Y-m-d H:i:s', time())){
             $this->returnError('未登录', 401);
             exit();
         }
