@@ -28,7 +28,7 @@ class Login extends CI_Controller
                 $this->users->insert([
                     'openid' => $openid,
                     'created_at' => date('Y-m-d H:i:s', time()),
-                    'uid' => string_make_guid(),
+                    'uid' => $this->string_make_guid(),
                 ]);
             }
             $token = md5($openid . $session_key);
