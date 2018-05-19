@@ -33,7 +33,7 @@ class Login extends CI_Controller
             }
             $token = md5($openid . $session_key);
 
-            $this->token->insert([
+            $this->token->add([
                 'uid' => $uid,
                 'openid' => $openid,
                 'token' => $token,
