@@ -26,11 +26,13 @@ class Login extends CI_Controller
             if ($user_info) {
                 $uid = $user_info['uid'];
             }else{
+                $uid = $this->string_make_guid();
                 $this->users->add([
                     'openid' => $openid,
                     'created_at' => date('Y-m-d H:i:s', time()),
-                    'uid' => $this->string_make_guid(),
+                    'uid' => $uid,
                 ]);
+
             }
             $token = md5($openid . $session_key);
 
