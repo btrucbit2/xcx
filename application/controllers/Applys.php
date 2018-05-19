@@ -21,7 +21,7 @@ class Applys extends MY_Controller
         $type = $_POST['type'];
         $address = $_POST['address'];
         $mobile = $_POST['mobile'];
-        $token = $_POST['token'];
+        $token = $_GET['token'];
 
         $token_info = $this->token->get_one(['token' => $token], 'created_at desc');
         if(!$token_info || $token!=$token_info['token'] || $token_info['expire_at'] < date('Y-m-d H:i:s', time())){
