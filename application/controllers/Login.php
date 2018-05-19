@@ -20,13 +20,8 @@ class Login extends CI_Controller
         $response = file_get_contents($url);
         if ($response) {
             $res = json_decode($response, true);
-            var_dump($res);
-
             $openid = $res['openid'];
             $session_key = $res['session_key'];
-            var_dump($openid);
-            var_dump($session_key);
-            exit;
             $user_info = $this->users->get_one(['open_id' => $openid]);
             if ($user_info) {
                 $uid = $user_info['uid'];
