@@ -19,8 +19,9 @@ class Login extends CI_Controller
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid=' . $appid . '&secret=' . $secret . '&js_code=' . $code . '&grant_type=authorization_code';
         $response = file_get_contents($url);
         if ($response) {
-            $openid = $response['openid'];
-            $session_key = $response['session_key'];
+            $res = json_decode($response, true);
+            $openid = $res['openid'];
+            $session_key = $res['session_key'];
             $user_info = $this->users->get_one(['open_id' => $openid]);
             if ($user_info) {
                 $uid = $user_info['uid'];
