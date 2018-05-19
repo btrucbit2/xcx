@@ -29,7 +29,7 @@ class Applys extends MY_Controller
             exit();
         }
 
-        $this->apply->insert([
+        $this->apply->add([
             'uid' => $token_info['uid'],
             'userame' => $userame,
             'type' => $type,
