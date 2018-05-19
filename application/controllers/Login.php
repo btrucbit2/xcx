@@ -11,7 +11,7 @@ class Login extends CI_Controller {
         $code = $_GET['code'];
         $url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.$appid.'&secret='.$secret.'&js_code='.$code.'&grant_type=authorization_code';
         $response = file_get_contents($url);
-        var_dump($response);
-        return $response;
+//        var_dump($response);
+        echo $response;
 	}
 }
