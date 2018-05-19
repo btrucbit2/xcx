@@ -23,9 +23,6 @@ class MY_Controller extends CI_Controller {
     {
 		header("Access-Control-Allow-Origin: *");
         parent::__construct();
-        //全局路径
-        define('APP_URL', $this->config->item('url_domain'));
-        define('UPLOAD_URL', APP_URL . 'statics/uploads/');
     }
 
 
