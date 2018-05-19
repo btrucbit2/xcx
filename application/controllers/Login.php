@@ -22,7 +22,7 @@ class Login extends CI_Controller
             $res = json_decode($response, true);
             $openid = $res['openid'];
             $session_key = $res['session_key'];
-            $user_info = $this->users->get_one(['open_id' => $openid]);
+            $user_info = $this->users->get_one(['openid' => $openid]);
             if ($user_info) {
                 $uid = $user_info['uid'];
                 $this->users->insert([
