@@ -31,7 +31,7 @@ class Applys extends MY_Controller
 
         $this->apply->add([
             'uid' => $token_info['uid'],
-            'userame' => $userame,
+            'username' => $userame,
             'type' => $type,
             'address' => $address,
             'mobile' => $mobile,
