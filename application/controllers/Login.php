@@ -44,7 +44,7 @@ class Login extends CI_Controller
                 'expire_at' => date('Y-m-d H:i:s', time() + 3600),
             ]);
         }
-        echo json_encode(['token' => $token, 'uid' => $uid]);
+        $this->return_data(['token' => $token, 'uid' => $uid]);
     }
 
     /**
@@ -59,5 +59,16 @@ class Login extends CI_Controller
         }
 
         return sprintf('%04x%04x%04x%04x%04x%04x%04x%04x', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
+
+    public function return_data($data, $msg = '', $code = '200')
+    {
+        $ret_data = array(
+            'code' => $code . '',
+            'msg' => $msg,
+            'data' => $data,
+        );
+        $http_code = $code; //新的api让code跟http_code保持一致
+        echo json_encode($ret_data);
     }
 }
